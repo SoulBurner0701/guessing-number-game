@@ -9,7 +9,7 @@
     OUTPUT:
     I've chosen a number. Try to guess it:
 
-    You guessed it in 10 tries!! (1st Try: PERFECT, <5 Tries: Sugoi, >5: Nice)
+    You guessed it in 10 tries!! 1st Try: PERFECT, <5 Tries: Sugoi, >5: Nice
 */
 #include <stdio.h>
 #include <time.h>
