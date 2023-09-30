@@ -15,8 +15,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-int main()
-{
+int main() {
     // Declarations
     int random_num, user_input;
 
@@ -25,50 +24,25 @@ int main()
     random_num = rand() % 100 + 1;
 
     // Getting User Input
-    do
-    {
-        printf("Guess a Number: \n", random_num);
+    do {
+        printf("Guess a Number: ");
         scanf("%d", &user_input);
 
         if (user_input == random_num)
-        {
-            printf("You guessed it right!\n", random_num);
-        }
+            printf("You guessed it right!\n");
 
-        else if (user_input != random_num && random_num < 101)
-        {
-            if (user_input > random_num - 10 && user_input < random_num)
-            {
-                printf("Very Close! Go Higher \n");
-            }
+        else if (user_input != random_num && random_num < 101) {
+            if (abs(user_input - random_num) < 10)
+                printf("Very Close! ");
 
-            else if (user_input < random_num - 10)
-            {
+            if (user_input < random_num)
                 printf("Go Higher!\n");
-            }
-
-            else if (user_input < random_num + 10 && user_input > random_num)
-            {
-                printf("Very Close! Go Lower \n");
-            }
-
-            else if (user_input > random_num + 10)
-            {
-                printf("Go Lower!\n");
-            }
-
             else
-            {
-                printf("Invalid Input\n");
-            }
+                printf("Go Lower!\n");
 
-            printf("You guessed it wrong!\n", random_num);
-        }
-        else
-        {
-
+            printf("You guessed it wrong!\n");
+        } else {
             printf("Out of Bound");
         }
-
     } while (user_input != random_num);
 }
