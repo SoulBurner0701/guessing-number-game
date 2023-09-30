@@ -1,37 +1,34 @@
-/*
-    Number: 50 (hidden) (random)
-    40-50: very close! go higher.
-    <40: go higher.
-
-    50-60: very close! go lower.
-    >60:
-
-    OUTPUT:
-    I've chosen a number. Try to guess it:
-
-    You guessed it in 10 tries!! 1st Try: PERFECT, <5 Tries: Sugoi, >5: Nice
-*/
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 
-int main() {
+int main()
+{
     // Declarations
-    int random_num, user_input;
+    int random_num, user_input, user_tries = 0;
 
     // Generating Random Number
     srand(time(0));
     random_num = rand() % 100 + 1;
 
     // Getting User Input
-    do {
+    do
+    {
         printf("Guess a Number: ");
         scanf("%d", &user_input);
 
         if (user_input == random_num)
-            printf("You guessed it right!\n");
+        {
+            user_tries += 1;
+            if (user_tries == 1)
+                printf("PERFERCT! ");
+            else if (user_tries < 5)
+                printf("AMAZING! ");
 
-        else if (user_input != random_num && random_num < 101) {
+            printf("You guessed it right in %d tries!\n", user_tries);
+        }
+        else if (user_input < 101 && user_input > 0)
+        {
             if (abs(user_input - random_num) < 10)
                 printf("Very Close! ");
 
@@ -41,8 +38,11 @@ int main() {
                 printf("Go Lower!\n");
 
             printf("You guessed it wrong!\n");
-        } else {
-            printf("Out of Bound");
+            user_tries += 1;
+        }
+        else
+        {
+            printf("Out of Bounds\n");
         }
     } while (user_input != random_num);
 }
